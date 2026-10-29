@@ -5,11 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>COS201 Lab Report — Student Course Management System</title>
-    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
         /* =========================================================
-           VERCEL-INSPIRED REPORT THEME
+           LIGHT CORPORATE REPORT — HARD & CLEAN
            ========================================================= */
         *,
         *::before,
@@ -20,99 +21,104 @@
         }
 
         :root {
-            --bg: #000000;
-            --bg-elevated: #0a0a0a;
-            --surface: #111111;
-            --surface-2: #1a1a1a;
-            --border: #222222;
-            --border-light: #333333;
-            --text: #ededed;
-            --text-2: #a1a1a1;
-            --text-3: #666666;
-            --accent: #0070f3;
-            --accent-2: #0f62fe;
-            --accent-soft: rgba(0, 112, 243, 0.10);
-            --success: #0070f3;
-            --gradient: linear-gradient(135deg, #0070f3, #7928ca);
-            --font: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-            --mono: 'Geist Mono', 'SF Mono', 'Fira Code', monospace;
-            --radius: 8px;
-            --radius-lg: 12px;
+            --bg: #ffffff;
+            --surface: #f8f9fb;
+            --surface-2: #f1f3f5;
+            --border: #d5d9e0;
+            --border-hard: #b0b6c1;
+            --text: #111318;
+            --text-2: #3d4350;
+            --text-3: #6b7280;
+            --accent: #1a56db;
+            --accent-dark: #12409e;
+            --accent-soft: rgba(26, 86, 219, 0.08);
+            --font: 'Nunito Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            --mono: 'JetBrains Mono', 'Consolas', 'Courier New', monospace;
+            --radius: 6px;
         }
 
         html {
             font-size: 15px;
-            -webkit-font-smoothing: antialiased;
         }
 
         body {
             font-family: var(--font);
             background: var(--bg);
             color: var(--text);
-            line-height: 1.7;
+            line-height: 1.75;
         }
 
-        /* ---- Container ---- */
         .container {
             max-width: 780px;
             margin: 0 auto;
-            padding: 3rem 1.5rem 4rem;
+            padding: 2.5rem 2rem 3.5rem;
         }
 
         /* ============================================
-           COVER / HEADER
+           COVER
            ============================================ */
         .cover {
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            background: var(--surface);
-            padding: 2.8rem 2.5rem;
-            margin-bottom: 2.5rem;
-            position: relative;
-            overflow: hidden;
+            border: 2px solid var(--text);
+            border-radius: var(--radius);
+            background: var(--bg);
+            padding: 2.5rem 2.2rem;
+            margin-bottom: 2.8rem;
         }
 
         .cover-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: .4rem;
-            background: var(--accent-soft);
-            border: 1px solid rgba(0, 112, 243, 0.25);
-            color: var(--accent);
-            font-size: .72rem;
-            font-weight: 600;
-            padding: .25rem .7rem;
-            border-radius: 100px;
+            display: inline-block;
+            background: var(--text);
+            color: #fff;
+            font-size: .7rem;
+            font-weight: 800;
+            padding: .3rem .8rem;
+            border-radius: 3px;
             text-transform: uppercase;
-            letter-spacing: .08em;
-            margin-bottom: 1.2rem;
+            letter-spacing: .1em;
+            margin-bottom: 1rem;
         }
 
         .cover h1 {
-            font-size: 2rem;
-            font-weight: 800;
-            letter-spacing: -0.04em;
-            line-height: 1.2;
-            margin-bottom: .35rem;
-            background: linear-gradient(to right, #fff, #a1a1a1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            font-size: 1.85rem;
+            font-weight: 900;
+            letter-spacing: -0.03em;
+            line-height: 1.15;
+            margin-bottom: .3rem;
+            color: var(--text);
         }
 
         .cover .tagline {
-            font-size: .95rem;
-            color: var(--text-2);
-            margin-bottom: 2rem;
+            font-size: .92rem;
+            color: var(--text-3);
+            font-weight: 600;
+            margin-bottom: .6rem;
+        }
+
+        .cover .demo-link {
+            display: inline-block;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: .82rem;
+            font-weight: 700;
+            padding: .3rem .7rem;
+            border: 1.5px solid var(--accent);
+            border-radius: 4px;
+            margin-bottom: 1.5rem;
+            transition: all .2s;
+        }
+
+        .cover .demo-link:hover {
+            background: var(--accent);
+            color: #fff;
         }
 
         /* Student Info Grid */
         .student-info {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: .7rem 2rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--border);
+            gap: .6rem 2.5rem;
+            padding-top: 1.4rem;
+            border-top: 2px solid var(--text);
         }
 
         .info-item {
@@ -121,22 +127,22 @@
         }
 
         .info-label {
-            font-size: .68rem;
-            font-weight: 600;
+            font-size: .62rem;
+            font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: .1em;
+            letter-spacing: .14em;
             color: var(--text-3);
-            margin-bottom: .15rem;
+            margin-bottom: .1rem;
         }
 
         .info-value {
-            font-size: .92rem;
-            font-weight: 500;
+            font-size: .9rem;
+            font-weight: 700;
             color: var(--text);
         }
 
         /* ============================================
-           SECTION STYLING
+           SECTIONS
            ============================================ */
         .section {
             margin-bottom: 2.5rem;
@@ -145,52 +151,56 @@
         .section-header {
             display: flex;
             align-items: center;
-            gap: .6rem;
-            margin-bottom: 1.2rem;
-            padding-bottom: .7rem;
-            border-bottom: 1px solid var(--border);
+            gap: .55rem;
+            margin-bottom: 1.1rem;
+            padding-bottom: .65rem;
+            border-bottom: 2px solid var(--text);
         }
 
         .section-number {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 26px;
-            height: 26px;
-            background: var(--accent-soft);
-            border: 1px solid rgba(0, 112, 243, 0.25);
-            border-radius: 6px;
-            font-size: .72rem;
-            font-weight: 700;
-            color: var(--accent);
+            width: 28px;
+            height: 28px;
+            background: var(--accent);
+            border-radius: 4px;
+            font-size: .75rem;
+            font-weight: 800;
+            color: #fff;
             flex-shrink: 0;
         }
 
         .section-header h2 {
-            font-size: 1.15rem;
-            font-weight: 700;
-            letter-spacing: -0.02em;
+            font-size: 1.1rem;
+            font-weight: 800;
+            letter-spacing: -0.01em;
+            text-transform: uppercase;
+            color: var(--text);
         }
 
         h3 {
-            font-size: .95rem;
-            font-weight: 700;
-            letter-spacing: -0.01em;
-            margin: 1.5rem 0 .5rem;
+            font-size: .92rem;
+            font-weight: 800;
+            margin: 1.6rem 0 .5rem;
             color: var(--text);
+            padding-left: .8rem;
+            border-left: 3px solid var(--accent);
         }
 
         p {
             color: var(--text-2);
-            margin-bottom: .8rem;
-            font-size: .9rem;
+            margin-bottom: .75rem;
+            font-size: .88rem;
+            font-weight: 500;
         }
 
         strong {
             color: var(--text);
+            font-weight: 800;
         }
 
-        /* ---- Lists ---- */
+        /* Lists */
         ul,
         ol {
             padding-left: 1.3rem;
@@ -199,87 +209,93 @@
 
         li {
             color: var(--text-2);
-            font-size: .9rem;
-            margin-bottom: .45rem;
+            font-size: .88rem;
+            font-weight: 500;
+            margin-bottom: .5rem;
+            line-height: 1.65;
         }
 
         li strong {
             color: var(--text);
         }
 
-        /* ---- Code ---- */
+        /* Code */
         code {
             font-family: var(--mono);
-            font-size: .82em;
+            font-size: .8em;
             background: var(--surface-2);
             border: 1px solid var(--border);
-            padding: .15rem .4rem;
-            border-radius: 5px;
-            color: var(--text);
+            padding: .12rem .4rem;
+            border-radius: 3px;
+            color: var(--accent-dark);
+            font-weight: 500;
         }
 
         pre {
             background: var(--surface);
-            border: 1px solid var(--border);
+            border: 1.5px solid var(--border);
+            border-left: 4px solid var(--accent);
             border-radius: var(--radius);
-            padding: 1.2rem 1.4rem;
+            padding: 1.1rem 1.3rem;
             overflow-x: auto;
             margin: .8rem 0 1.2rem;
-            font-size: .82rem;
-            line-height: 1.75;
+            font-size: .8rem;
+            line-height: 1.8;
         }
 
         pre code {
             background: none;
             border: none;
             padding: 0;
-            font-size: .82rem;
+            font-size: .8rem;
             color: var(--text-2);
         }
 
-        /* ---- Table ---- */
+        /* Tables */
         table {
             width: 100%;
             border-collapse: collapse;
             margin: .8rem 0 1.2rem;
-            font-size: .88rem;
+            font-size: .86rem;
+            border: 1.5px solid var(--border);
         }
 
         th,
         td {
             text-align: left;
-            padding: .6rem .8rem;
+            padding: .55rem .8rem;
             border-bottom: 1px solid var(--border);
         }
 
         th {
-            font-size: .68rem;
-            font-weight: 600;
+            font-size: .65rem;
+            font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: .08em;
+            letter-spacing: .1em;
             color: var(--text-3);
-            background: var(--surface);
-            border-top: 1px solid var(--border);
+            background: var(--surface-2);
+            border-bottom: 2px solid var(--border-hard);
         }
 
         td {
             color: var(--text-2);
+            font-weight: 500;
         }
 
         td:first-child {
             color: var(--text);
-            font-weight: 500;
+            font-weight: 700;
         }
 
         td code {
-            font-size: .8em;
+            font-size: .78em;
         }
 
-        /* ---- Screenshots ---- */
+        /* Screenshots */
         .screenshot {
             margin: 1.2rem 0 1.6rem;
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
+            border: 1.5px solid var(--border);
+            border-radius: var(--radius);
             overflow: hidden;
             background: var(--surface);
         }
@@ -287,24 +303,25 @@
         .screenshot-bar {
             display: flex;
             align-items: center;
-            gap: .4rem;
-            padding: .6rem .9rem;
+            gap: .35rem;
+            padding: .5rem .85rem;
             background: var(--surface-2);
             border-bottom: 1px solid var(--border);
         }
 
         .screenshot-dot {
-            width: 10px;
-            height: 10px;
+            width: 9px;
+            height: 9px;
             border-radius: 50%;
-            background: var(--border-light);
+            background: var(--border-hard);
         }
 
         .screenshot-bar span {
-            font-size: .72rem;
+            font-size: .7rem;
             color: var(--text-3);
-            margin-left: .5rem;
+            margin-left: .4rem;
             font-family: var(--mono);
+            font-weight: 500;
         }
 
         .screenshot img {
@@ -313,40 +330,46 @@
         }
 
         .screenshot figcaption {
-            padding: .55rem .9rem;
-            font-size: .75rem;
+            padding: .5rem .85rem;
+            font-size: .72rem;
             color: var(--text-3);
             text-align: center;
+            font-weight: 600;
             border-top: 1px solid var(--border);
+            background: var(--surface);
         }
 
-        /* ---- Callout Card ---- */
+        /* Callout */
         .callout {
-            border: 1px solid var(--border);
+            border: 1.5px solid var(--border);
+            border-left: 4px solid var(--accent);
             border-radius: var(--radius);
-            padding: 1rem 1.2rem;
-            background: var(--surface);
+            padding: .9rem 1.1rem;
+            background: var(--accent-soft);
             margin: .8rem 0 1.2rem;
         }
 
         .callout p {
-            margin-bottom: .3rem;
+            margin-bottom: .25rem;
         }
 
-        /* ---- Divider ---- */
+        /* Divider */
         hr {
             border: none;
-            border-top: 1px solid var(--border);
+            border-top: 2px solid var(--text);
             margin: 2.5rem 0;
         }
 
-        /* ---- Footer ---- */
+        /* Footer */
         .report-footer {
             text-align: center;
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--border);
-            font-size: .75rem;
+            padding-top: 1.2rem;
+            border-top: 2px solid var(--text);
+            font-size: .72rem;
+            font-weight: 700;
             color: var(--text-3);
+            text-transform: uppercase;
+            letter-spacing: .08em;
         }
 
         .report-footer .dot {
@@ -355,39 +378,24 @@
             height: 4px;
             border-radius: 50%;
             background: var(--text-3);
-            margin: 0 .6rem;
+            margin: 0 .5rem;
             vertical-align: middle;
         }
 
-        /* ---- Print ---- */
+        /* Print */
         @media print {
             body {
-                background: #fff;
-                color: #111;
+                padding: 0;
             }
 
-            .cover,
-            .section,
-            .screenshot,
-            .callout,
-            pre,
-            th {
-                background: #fff;
-                border-color: #e5e5e5;
+            .container {
+                padding: 1cm;
+                max-width: none;
             }
 
-
-
-            .cover h1 {
-                background: none;
-                -webkit-text-fill-color: #000;
-                color: #000;
-            }
-
-            p,
-            li,
-            td {
-                color: #444;
+            .cover .demo-link {
+                border: 1px solid #333;
+                color: #333;
             }
 
             .screenshot img {
@@ -398,20 +406,24 @@
             .screenshot {
                 page-break-inside: avoid;
             }
+
+            h3 {
+                page-break-after: avoid;
+            }
         }
 
-        /* ---- Mobile ---- */
+        /* Mobile */
         @media (max-width: 600px) {
             .student-info {
                 grid-template-columns: 1fr;
             }
 
             .cover {
-                padding: 2rem 1.4rem;
+                padding: 1.8rem 1.3rem;
             }
 
             .cover h1 {
-                font-size: 1.5rem;
+                font-size: 1.45rem;
             }
         }
     </style>
@@ -428,10 +440,8 @@
             <div class="cover-badge">● COS201 Programming I</div>
             <h1>Student Course Management System</h1>
             <p class="tagline">Mid-Semester Lab Assessment — Project Report</p>
-            <p style="margin-bottom: 1.5rem;"><a href="https://trixon-llc.github.io/cos-201-lab-assessment"
-                    target="_blank"
-                    style="color: var(--accent); text-decoration: none; font-size: .85rem; font-weight: 500; border-bottom: 1px solid rgba(0,112,243,0.3);">🔗
-                    Live Demo — trixon-llc.github.io/cos-201-lab-assessment</a></p>
+            <a href="https://trixon-llc.github.io/cos-201-lab-assessment" target="_blank" class="demo-link">🔗 Live Demo
+                — trixon-llc.github.io/cos-201-lab-assessment</a>
 
             <div class="student-info">
                 <div class="info-item">
