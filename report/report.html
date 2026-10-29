@@ -4,9 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>COS201 Lab Assessment Report — Student Course Management System</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>COS201 Lab Report — Student Course Management System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
+        /* =========================================================
+           VERCEL-INSPIRED REPORT THEME
+           ========================================================= */
         *,
         *::before,
         *::after {
@@ -16,120 +20,291 @@
         }
 
         :root {
-            --bg: #fdfdfe;
-            --text: #1a1a2e;
-            --muted: #5a5a7a;
-            --accent: #6c63ff;
-            --border: #e2e4ea;
-            --surface: #f5f6fa;
-            --code-bg: #f0f1f5;
+            --bg: #000000;
+            --bg-elevated: #0a0a0a;
+            --surface: #111111;
+            --surface-2: #1a1a1a;
+            --border: #222222;
+            --border-light: #333333;
+            --text: #ededed;
+            --text-2: #a1a1a1;
+            --text-3: #666666;
+            --accent: #0070f3;
+            --accent-2: #0f62fe;
+            --accent-soft: rgba(0, 112, 243, 0.10);
+            --success: #0070f3;
+            --gradient: linear-gradient(135deg, #0070f3, #7928ca);
+            --font: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            --mono: 'Geist Mono', 'SF Mono', 'Fira Code', monospace;
             --radius: 8px;
+            --radius-lg: 12px;
         }
 
         html {
             font-size: 15px;
+            -webkit-font-smoothing: antialiased;
         }
 
         body {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            color: var(--text);
+            font-family: var(--font);
             background: var(--bg);
-            line-height: 1.75;
-            max-width: 800px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        /* ---- Container ---- */
+        .container {
+            max-width: 780px;
             margin: 0 auto;
-            padding: 2.5rem 2rem 3rem;
+            padding: 3rem 1.5rem 4rem;
         }
 
-        /* ---- Header ---- */
-        .report-header {
-            text-align: center;
+        /* ============================================
+           COVER / HEADER
+           ============================================ */
+        .cover {
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            background: var(--surface);
+            padding: 2.8rem 2.5rem;
             margin-bottom: 2.5rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 2px solid var(--accent);
+            position: relative;
+            overflow: hidden;
         }
 
-        .report-header h1 {
-            font-size: 1.6rem;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            margin-bottom: .25rem;
-        }
-
-        .report-header .course-tag {
-            display: inline-block;
-            background: var(--accent);
-            color: #fff;
-            font-size: .75rem;
+        .cover-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: .4rem;
+            background: var(--accent-soft);
+            border: 1px solid rgba(0, 112, 243, 0.25);
+            color: var(--accent);
+            font-size: .72rem;
             font-weight: 600;
-            padding: .2rem .7rem;
-            border-radius: 20px;
+            padding: .25rem .7rem;
+            border-radius: 100px;
             text-transform: uppercase;
-            letter-spacing: .06em;
-            margin-bottom: .6rem;
+            letter-spacing: .08em;
+            margin-bottom: 1.2rem;
         }
 
-        .report-header p {
-            color: var(--muted);
-            font-size: .88rem;
+        .cover h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            line-height: 1.2;
+            margin-bottom: .35rem;
+            background: linear-gradient(to right, #fff, #a1a1a1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        .report-header .meta-row {
+        .cover .tagline {
+            font-size: .95rem;
+            color: var(--text-2);
+            margin-bottom: 2rem;
+        }
+
+        /* Student Info Grid */
+        .student-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: .7rem 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .info-item {
             display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: .6rem;
-            font-size: .82rem;
-            color: var(--muted);
+            flex-direction: column;
         }
 
-        .report-header .meta-row strong {
+        .info-label {
+            font-size: .68rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: .1em;
+            color: var(--text-3);
+            margin-bottom: .15rem;
+        }
+
+        .info-value {
+            font-size: .92rem;
+            font-weight: 500;
             color: var(--text);
         }
 
-        /* ---- Sections ---- */
-        h2 {
+        /* ============================================
+           SECTION STYLING
+           ============================================ */
+        .section {
+            margin-bottom: 2.5rem;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: .6rem;
+            margin-bottom: 1.2rem;
+            padding-bottom: .7rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 26px;
+            height: 26px;
+            background: var(--accent-soft);
+            border: 1px solid rgba(0, 112, 243, 0.25);
+            border-radius: 6px;
+            font-size: .72rem;
+            font-weight: 700;
+            color: var(--accent);
+            flex-shrink: 0;
+        }
+
+        .section-header h2 {
             font-size: 1.15rem;
             font-weight: 700;
-            margin: 2rem 0 .75rem;
-            padding-bottom: .4rem;
-            border-bottom: 1px solid var(--border);
-            color: var(--accent);
+            letter-spacing: -0.02em;
         }
 
         h3 {
-            font-size: 1rem;
-            font-weight: 600;
-            margin: 1.2rem 0 .4rem;
+            font-size: .95rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            margin: 1.5rem 0 .5rem;
+            color: var(--text);
         }
 
         p {
-            margin-bottom: .75rem;
+            color: var(--text-2);
+            margin-bottom: .8rem;
+            font-size: .9rem;
         }
 
+        strong {
+            color: var(--text);
+        }
+
+        /* ---- Lists ---- */
         ul,
         ol {
-            margin: .5rem 0 1rem 1.5rem;
+            padding-left: 1.3rem;
+            margin: .5rem 0 1rem;
         }
 
         li {
-            margin-bottom: .35rem;
+            color: var(--text-2);
+            font-size: .9rem;
+            margin-bottom: .45rem;
         }
 
+        li strong {
+            color: var(--text);
+        }
+
+        /* ---- Code ---- */
         code {
-            background: var(--code-bg);
+            font-family: var(--mono);
+            font-size: .82em;
+            background: var(--surface-2);
+            border: 1px solid var(--border);
             padding: .15rem .4rem;
-            border-radius: 4px;
-            font-size: .88em;
-            font-family: 'Consolas', 'Courier New', monospace;
+            border-radius: 5px;
+            color: var(--text);
+        }
+
+        pre {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.2rem 1.4rem;
+            overflow-x: auto;
+            margin: .8rem 0 1.2rem;
+            font-size: .82rem;
+            line-height: 1.75;
+        }
+
+        pre code {
+            background: none;
+            border: none;
+            padding: 0;
+            font-size: .82rem;
+            color: var(--text-2);
+        }
+
+        /* ---- Table ---- */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: .8rem 0 1.2rem;
+            font-size: .88rem;
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: .6rem .8rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        th {
+            font-size: .68rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+            color: var(--text-3);
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+        }
+
+        td {
+            color: var(--text-2);
+        }
+
+        td:first-child {
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        td code {
+            font-size: .8em;
         }
 
         /* ---- Screenshots ---- */
         .screenshot {
-            margin: 1.2rem 0;
+            margin: 1.2rem 0 1.6rem;
             border: 1px solid var(--border);
-            border-radius: var(--radius);
+            border-radius: var(--radius-lg);
             overflow: hidden;
             background: var(--surface);
+        }
+
+        .screenshot-bar {
+            display: flex;
+            align-items: center;
+            gap: .4rem;
+            padding: .6rem .9rem;
+            background: var(--surface-2);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .screenshot-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--border-light);
+        }
+
+        .screenshot-bar span {
+            font-size: .72rem;
+            color: var(--text-3);
+            margin-left: .5rem;
+            font-family: var(--mono);
         }
 
         .screenshot img {
@@ -138,67 +313,105 @@
         }
 
         .screenshot figcaption {
-            padding: .5rem .8rem;
-            font-size: .8rem;
-            color: var(--muted);
+            padding: .55rem .9rem;
+            font-size: .75rem;
+            color: var(--text-3);
             text-align: center;
-            font-style: italic;
             border-top: 1px solid var(--border);
         }
 
-        /* ---- Table ---- */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: .8rem 0 1.2rem;
-            font-size: .9rem;
-        }
-
-        th,
-        td {
-            text-align: left;
-            padding: .55rem .75rem;
+        /* ---- Callout Card ---- */
+        .callout {
             border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1rem 1.2rem;
+            background: var(--surface);
+            margin: .8rem 0 1.2rem;
         }
 
-        th {
-            background: var(--surface);
-            font-weight: 600;
-            font-size: .82rem;
-            text-transform: uppercase;
-            letter-spacing: .04em;
-            color: var(--muted);
+        .callout p {
+            margin-bottom: .3rem;
+        }
+
+        /* ---- Divider ---- */
+        hr {
+            border: none;
+            border-top: 1px solid var(--border);
+            margin: 2.5rem 0;
         }
 
         /* ---- Footer ---- */
         .report-footer {
-            margin-top: 2.5rem;
-            padding-top: 1rem;
-            border-top: 1px solid var(--border);
             text-align: center;
-            font-size: .82rem;
-            color: var(--muted);
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+            font-size: .75rem;
+            color: var(--text-3);
+        }
+
+        .report-footer .dot {
+            display: inline-block;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: var(--text-3);
+            margin: 0 .6rem;
+            vertical-align: middle;
         }
 
         /* ---- Print ---- */
         @media print {
             body {
-                padding: 1cm;
-                max-width: none;
-                font-size: 12pt;
+                background: #fff;
+                color: #111;
+            }
+
+            .cover,
+            .section,
+            .screenshot,
+            .callout,
+            pre,
+            th {
+                background: #fff;
+                border-color: #e5e5e5;
+            }
+
+
+
+            .cover h1 {
+                background: none;
+                -webkit-text-fill-color: #000;
+                color: #000;
+            }
+
+            p,
+            li,
+            td {
+                color: #444;
             }
 
             .screenshot img {
-                max-height: 280px;
+                max-height: 260px;
                 object-fit: contain;
-            }
-
-            h2 {
-                page-break-after: avoid;
             }
 
             .screenshot {
                 page-break-inside: avoid;
+            }
+        }
+
+        /* ---- Mobile ---- */
+        @media (max-width: 600px) {
+            .student-info {
+                grid-template-columns: 1fr;
+            }
+
+            .cover {
+                padding: 2rem 1.4rem;
+            }
+
+            .cover h1 {
+                font-size: 1.5rem;
             }
         }
     </style>
@@ -206,318 +419,422 @@
 
 <body>
 
-    <!-- ============================================ -->
-    <!-- HEADER                                       -->
-    <!-- ============================================ -->
-    <header class="report-header">
-        <span class="course-tag">COS201 Programming I</span>
-        <h1>Student Course Management System</h1>
-        <p>Mid-Semester Lab Assessment — Project Report</p>
-        <div class="meta-row">
-            <span><strong>Date:</strong> October 2026</span>
+    <div class="container">
+
+        <!-- ============================================ -->
+        <!-- COVER                                        -->
+        <!-- ============================================ -->
+        <header class="cover">
+            <div class="cover-badge">● COS201 Programming I</div>
+            <h1>Student Course Management System</h1>
+            <p class="tagline">Mid-Semester Lab Assessment — Project Report</p>
+            <p style="margin-bottom: 1.5rem;"><a href="https://trixon-llc.github.io/cos-201-lab-assessment"
+                    target="_blank"
+                    style="color: var(--accent); text-decoration: none; font-size: .85rem; font-weight: 500; border-bottom: 1px solid rgba(0,112,243,0.3);">🔗
+                    Live Demo — trixon-llc.github.io/cos-201-lab-assessment</a></p>
+
+            <div class="student-info">
+                <div class="info-item">
+                    <span class="info-label">Full Name</span>
+                    <span class="info-value">Prosper Nnodim</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Matric Number</span>
+                    <span class="info-value">2025/B/CSC/0577</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Email Address</span>
+                    <span class="info-value">p.nnodim8145@miva.edu.ng</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Department</span>
+                    <span class="info-value">Computer Science</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- ============================================ -->
+        <!-- 1. WHAT THE SYSTEM DOES                      -->
+        <!-- ============================================ -->
+        <div class="section">
+            <div class="section-header">
+                <span class="section-number">1</span>
+                <h2>What the System Does</h2>
+            </div>
+
+            <p>
+                The <strong>Student Course Management System</strong> is a browser-based application
+                designed to help students record and manage the courses they are taking for the
+                semester. It is built entirely with <strong>HTML</strong>, <strong>CSS</strong>, and
+                <strong>JavaScript</strong> — no external frameworks, server, or installation is
+                required. Users simply open the <code>index.html</code> file in any modern web
+                browser to run the program.
+            </p>
+
+            <p>The system provides the following seven operations through a graphical menu interface:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Operation</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Add Course</td>
+                        <td>Enter a course code, title, and credit units to register a new course.</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>View All Courses</td>
+                        <td>Display every registered course in a formatted table.</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Search Course by Code</td>
+                        <td>Find a specific course using its unique code.</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Compute Total Units</td>
+                        <td>Calculate and display the sum of all credit units.</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Save to File</td>
+                        <td>Download the course list as a <code>.txt</code> file.</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Load from File</td>
+                        <td>Upload a previously saved <code>.txt</code> file to restore courses.</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>Exit Program</td>
+                        <td>Display a goodbye message; the user can close the tab.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p>
+                All data is also persisted in the browser's <strong>localStorage</strong>, so courses
+                survive page refreshes without needing to manually save and reload a file.
+            </p>
         </div>
-    </header>
 
-    <!-- ============================================ -->
-    <!-- 1. WHAT THE SYSTEM DOES                      -->
-    <!-- ============================================ -->
-    <h2>1. What the System Does</h2>
+        <!-- ============================================ -->
+        <!-- 2. HOW EACH FEATURE WORKS                    -->
+        <!-- ============================================ -->
+        <div class="section">
+            <div class="section-header">
+                <span class="section-number">2</span>
+                <h2>How Each Major Feature Works</h2>
+            </div>
 
-    <p>
-        The <strong>Student Course Management System</strong> is a browser-based application that
-        helps students record and manage the courses they are taking for the semester. It is built
-        entirely with <strong>HTML</strong>, <strong>CSS</strong>, and <strong>JavaScript</strong> — no
-        external frameworks or server-side setup is required. Users simply open the
-        <code>index.html</code> file in any modern web browser to run the program.
-    </p>
+            <!-- 2.1 -->
+            <h3>2.1 &nbsp; Add Course</h3>
+            <p>
+                The user fills in three fields — <strong>Course Code</strong>,
+                <strong>Course Title</strong>, and <strong>Credit Units</strong> — then clicks
+                <strong>"Add Course"</strong>. The system validates every input: empty fields are
+                rejected, units must be a positive integer, and duplicate course codes are not
+                allowed. On success, a green confirmation is shown and the form is cleared for
+                the next entry.
+            </p>
+            <figure class="screenshot">
+                <div class="screenshot-bar">
+                    <div class="screenshot-dot"></div>
+                    <div class="screenshot-dot"></div>
+                    <div class="screenshot-dot"></div>
+                    <span>Add Course</span>
+                </div>
+                <img src="img (1).png" alt="Add Course view">
+                <figcaption>Figure 1 — The "Add Course" form with input fields and validation.</figcaption>
+            </figure>
 
-    <p>The system provides the following seven operations through a graphical menu interface:</p>
+            <!-- 2.2 -->
+            <h3>2.2 &nbsp; View All Courses</h3>
+            <p>
+                Clicking <strong>"View All Courses"</strong> renders every registered course
+                in a structured table with columns for row number, code, title, units, and a
+                <strong>Remove</strong> button. The table is rebuilt each time the view opens
+                using a loop over the internal array.
+            </p>
+            <figure class="screenshot">
+                <div class="screenshot-bar">
+                    <div class="screenshot-dot"></div>
+                    <div class="screenshot-dot"></div>
+                    <div class="screenshot-dot"></div>
+                    <span>View All Courses</span>
+                </div>
+                <img src="img (2).png" alt="View All Courses">
+                <figcaption>Figure 2 — All registered courses displayed in a formatted table.</figcaption>
+            </figure>
 
-    <table>
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Operation</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td>Add Course</td>
-                <td>Enter a course code, title, and credit units to register a new course.</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>View All Courses</td>
-                <td>Display every registered course in a formatted table.</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Search Course by Code</td>
-                <td>Find a specific course by entering its code.</td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>Compute Total Units</td>
-                <td>Calculate and display the sum of all credit units.</td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td>Save to File</td>
-                <td>Download the course list as a <code>.txt</code> file.</td>
-            </tr>
-            <tr>
-                <td>6</td>
-                <td>Load from File</td>
-                <td>Upload a previously saved <code>.txt</code> file to restore courses.</td>
-            </tr>
-            <tr>
-                <td>7</td>
-                <td>Exit Program</td>
-                <td>Display a goodbye message; the user can then close the tab.</td>
-            </tr>
-        </tbody>
-    </table>
+            <!-- 2.3 -->
+            <h3>2.3 &nbsp; Search Course by Code</h3>
+            <p>
+                The user types a course code and clicks <strong>"Search"</strong>. Internally, the
+                system uses a <strong>recursive</strong> function (<code>searchByCode</code>) that
+                starts at index&nbsp;0, checks the current element, and calls itself with
+                <code>index + 1</code> until a match is found or the end of the array is reached.
+                The result is shown in a highlighted card — green if found, red if not.
+            </p>
+            <figure class="screenshot">
+                <div class="screenshot-bar">
+                    <div class="screenshot-dot"></div>
+                    <div class="screenshot-dot"></div>
+                    <div class="screenshot-dot"></div>
+                    <span>Search by Code</span>
+                </div>
+                <img src="img (3).png" alt="Search result">
+                <figcaption>Figure 3 — Searching for "COS 201" returns a successful match.</figcaption>
+            </figure>
 
-    <p>
-        All data is also persisted in the browser's <strong>localStorage</strong>, so courses survive
-        page refreshes without needing to manually save and reload a file.
-    </p>
+            <!-- 2.4 -->
+            <h3>2.4 &nbsp; Compute Total Units</h3>
+            <p>
+                This feature uses a second <strong>recursive</strong> function
+                (<code>computeTotalUnits</code>) that accumulates credit units by adding the
+                current course's units to the result of calling itself on the remaining courses.
+                The base case returns&nbsp;0 when the index exceeds the array length.
+            </p>
+            <figure class="screenshot">
+                <div class="screenshot-bar">
+                    <div class="screenshot-dot"></div>
+                    <div class="screenshot-dot"></div>
+                    <div class="screenshot-dot"></div>
+                    <span>Compute Total Units</span>
+                </div>
+                <img src="img (4).png" alt="Total credit units">
+                <figcaption>Figure 4 — Total credit units computed recursively (5 units across 2 courses).</figcaption>
+            </figure>
 
-    <!-- ============================================ -->
-    <!-- 2. HOW EACH MAJOR FEATURE WORKS              -->
-    <!-- ============================================ -->
-    <h2>2. How Each Major Feature Works</h2>
+            <!-- 2.5 -->
+            <h3>2.5 &nbsp; Save to File</h3>
+            <p>
+                The system serializes every course into a <strong>CSV</strong>-formatted string
+                (one line per course: <code>CODE,Title,Units</code>) with a header row. A
+                <code>Blob</code> object is created and offered as a downloadable
+                <code>my_courses.txt</code> file — no server required.
+            </p>
+            <figure class="screenshot">
+                <div class="screenshot-bar">
+                    <div class="screenshot-dot"></div>
+                    <div class="screenshot-dot"></div>
+                    <div class="screenshot-dot"></div>
+                    <span>Save to File</span>
+                </div>
+                <img src="img (5).png" alt="Save to File">
+                <figcaption>Figure 5 — The "Save to File" view with the download button.</figcaption>
+            </figure>
 
-    <h3>2.1 &nbsp; Add Course</h3>
-    <p>
-        The user fills in three fields — <em>Course Code</em>, <em>Course Title</em>, and
-        <em>Credit Units</em> — and clicks <strong>"Add Course"</strong>. The system validates
-        every input:
-        empty fields are rejected, units must be a positive integer, and duplicate course codes
-        are not allowed. On success, a green confirmation message is displayed and the form is
-        cleared for the next entry.
-    </p>
-    <figure class="screenshot">
-        <img src="img (1).png" alt="Add Course view">
-        <figcaption>Figure 1 — The &ldquo;Add Course&rdquo; form with input fields and validation.</figcaption>
-    </figure>
+            <!-- 2.6 -->
+            <h3>2.6 &nbsp; Load from File</h3>
+            <p>
+                The user selects a previously saved <code>.txt</code> file. The system reads it
+                using the browser's <code>FileReader</code> API, parses each CSV line back into
+                a <code>Course</code> object via <code>Course.fromCSV()</code>, skips duplicates,
+                and appends valid entries. Malformed lines are caught by <code>try-catch</code>
+                blocks and reported as errors.
+            </p>
+            <figure class="screenshot">
+                <div class="screenshot-bar">
+                    <div class="screenshot-dot"></div>
+                    <div class="screenshot-dot"></div>
+                    <div class="screenshot-dot"></div>
+                    <span>Load from File</span>
+                </div>
+                <img src="img (6).png" alt="Load from File">
+                <figcaption>Figure 6 — The "Load from File" view with the file chooser.</figcaption>
+            </figure>
 
-    <h3>2.2 &nbsp; View All Courses</h3>
-    <p>
-        Clicking <strong>"View All Courses"</strong> renders every registered course inside a
-        table with columns for row number, code, title, units, and a <em>Remove</em>
-        button. The table is rebuilt (using a loop over the internal array) every time the view
-        is opened, ensuring it always reflects the latest data.
-    </p>
-    <figure class="screenshot">
-        <img src="img (2).png" alt="View All Courses table">
-        <figcaption>Figure 2 — All registered courses displayed in a formatted table.</figcaption>
-    </figure>
+            <!-- 2.7 -->
+            <h3>2.7 &nbsp; Exit Program</h3>
+            <p>
+                Selecting <strong>"Exit Program"</strong> displays a farewell message. Since data
+                is saved to localStorage, nothing is lost upon closing.
+            </p>
+            <figure class="screenshot">
+                <div class="screenshot-bar">
+                    <div class="screenshot-dot"></div>
+                    <div class="screenshot-dot"></div>
+                    <div class="screenshot-dot"></div>
+                    <span>Exit Program</span>
+                </div>
+                <img src="img (7).png" alt="Exit view">
+                <figcaption>Figure 7 — The "Exit Program" goodbye screen.</figcaption>
+            </figure>
+        </div>
 
-    <h3>2.3 &nbsp; Search Course by Code</h3>
-    <p>
-        The user types a course code and clicks <strong>"Search"</strong>. Internally, the system
-        uses a <strong>recursive</strong> search function (<code>searchByCode</code>) that starts
-        at index&nbsp;0, checks the current element, and calls itself with <code>index + 1</code>
-        until a match is found or the end of the array is reached. The result is shown in a
-        highlighted card — green if found, red if not.
-    </p>
-    <figure class="screenshot">
-        <img src="img (3).png" alt="Search result showing course found">
-        <figcaption>Figure 3 — Searching for &ldquo;COS 201&rdquo; returns a successful match.</figcaption>
-    </figure>
+        <!-- ============================================ -->
+        <!-- 3. CHALLENGES & ERROR HANDLING               -->
+        <!-- ============================================ -->
+        <div class="section">
+            <div class="section-header">
+                <span class="section-number">3</span>
+                <h2>Challenges Encountered &amp; Error Handling</h2>
+            </div>
 
-    <h3>2.4 &nbsp; Compute Total Units</h3>
-    <p>
-        This feature uses a second <strong>recursive</strong> function
-        (<code>computeTotalUnits</code>) that accumulates the credit units of each course
-        by adding the current course's units to the result of calling itself on the remaining
-        courses. The base case returns&nbsp;0 when the index exceeds the array length.
-        The total is presented in a large statistics card along with the course count.
-    </p>
-    <figure class="screenshot">
-        <img src="img (4).png" alt="Total credit units display">
-        <figcaption>Figure 4 — Total credit units computed recursively and displayed (5 units across 2 courses).
-        </figcaption>
-    </figure>
+            <p>Several challenges arose during development, each addressed with deliberate error-handling strategies:
+            </p>
 
-    <h3>2.5 &nbsp; Save to File</h3>
-    <p>
-        The system serializes every course into a <strong>CSV</strong>-formatted string
-        (one line per course: <code>CODE,Title,Units</code>) with a header row. A
-        <code>Blob</code> object is created from the string and offered to the user as a
-        downloadable <code>my_courses.txt</code> file — no server is required.
-    </p>
-    <figure class="screenshot">
-        <img src="img (5).png" alt="Save to File view">
-        <figcaption>Figure 5 — The &ldquo;Save to File&rdquo; view with the download button.</figcaption>
-    </figure>
+            <ul>
+                <li>
+                    <strong>Invalid user input</strong> — Users may leave fields empty, type letters for
+                    units, or enter negative numbers. All inputs are validated inside
+                    <code>addCourse()</code> before a <code>Course</code> object is created.
+                    If validation fails, an <code>Error</code> is thrown and caught by
+                    <code>try-catch</code> in the UI layer, displaying a descriptive red message.
+                </li>
+                <li>
+                    <strong>Duplicate course codes</strong> — Before adding, the system iterates
+                    through the existing array with a <code>for</code> loop to detect duplicates.
+                    Duplicates are rejected with a clear error message.
+                </li>
+                <li>
+                    <strong>Corrupted file data</strong> — When loading from a file, each line is
+                    parsed inside a <code>try-catch</code>. Lines that don't conform to the
+                    expected format are skipped and their errors are collected. If zero valid
+                    courses are found, the user is notified.
+                </li>
+                <li>
+                    <strong>Data loss on refresh</strong> — Initially, refreshing cleared all
+                    courses. This was solved by adding <strong>localStorage</strong> persistence.
+                    Courses are auto-saved after every add, remove, or load operation and
+                    restored on page load.
+                </li>
+                <li>
+                    <strong>localStorage unavailability</strong> — In private browsing modes,
+                    localStorage may not be available. The <code>saveToStorage()</code> and
+                    <code>loadFromStorage()</code> methods are wrapped in <code>try-catch</code>
+                    blocks, allowing the app to function without persistence.
+                </li>
+            </ul>
+        </div>
 
-    <h3>2.6 &nbsp; Load from File</h3>
-    <p>
-        The user selects a previously saved <code>.txt</code> file. The system reads it using the
-        browser's <code>FileReader</code> API, parses each CSV line back into a
-        <code>Course</code> object (via <code>Course.fromCSV</code>), skips duplicates, and
-        adds valid entries to the internal list. Any malformed lines are caught by
-        <code>try-catch</code> blocks and reported as errors.
-    </p>
-    <figure class="screenshot">
-        <img src="img (6).png" alt="Load from File view">
-        <figcaption>Figure 6 — The &ldquo;Load from File&rdquo; view with the file chooser button.</figcaption>
-    </figure>
+        <!-- ============================================ -->
+        <!-- 4. WHERE RECURSION WAS APPLIED               -->
+        <!-- ============================================ -->
+        <div class="section">
+            <div class="section-header">
+                <span class="section-number">4</span>
+                <h2>Where Recursion Was Applied</h2>
+            </div>
 
-    <h3>2.7 &nbsp; Exit Program</h3>
-    <p>
-        Selecting <strong>"Exit Program"</strong> displays a farewell message instructing the
-        user to close the browser tab. Since data is saved to localStorage, nothing is lost.
-    </p>
-    <figure class="screenshot">
-        <img src="img (7).png" alt="Exit Program view">
-        <figcaption>Figure 7 — The &ldquo;Exit Program&rdquo; goodbye screen.</figcaption>
-    </figure>
+            <p>Recursion is used in two core methods inside the <code>CourseManager</code> class:</p>
 
-    <!-- ============================================ -->
-    <!-- 3. CHALLENGES & ERROR HANDLING               -->
-    <!-- ============================================ -->
-    <h2>3. Challenges Encountered &amp; How Errors Were Handled</h2>
-
-    <p>Several challenges arose during development, each addressed with deliberate error-handling strategies:</p>
-
-    <ul>
-        <li>
-            <strong>Invalid user input:</strong> Users might leave fields empty, type letters for
-            units, or enter a negative number. Every input is validated inside
-            <code>addCourse()</code> before a <code>Course</code> object is created.
-            If validation fails, an <code>Error</code> is thrown and caught by a
-            <code>try-catch</code> block in the UI layer, which displays a clear red error
-            message — the application never crashes.
-        </li>
-        <li>
-            <strong>Duplicate course codes:</strong> Before adding a course, the system iterates
-            through the existing array (using a <code>for</code> loop) to check if the code
-            already exists. Duplicates are rejected with a descriptive message.
-        </li>
-        <li>
-            <strong>Corrupted or malformed files:</strong> When loading from a file, each line is
-            individually parsed inside a <code>try-catch</code>. Lines that do not conform to
-            the expected <code>CODE,Title,Units</code> format are skipped and their errors
-            are collected. If no valid courses are found at all, the user is informed.
-        </li>
-        <li>
-            <strong>Data persistence across refreshes:</strong> Initially, refreshing the page
-            cleared all courses. This was solved by adding <strong>localStorage</strong>
-            persistence — courses are automatically saved after every add, remove, or file-load
-            operation and restored when the page loads.
-        </li>
-        <li>
-            <strong>localStorage unavailability:</strong> In rare cases (e.g., private browsing),
-            localStorage may not be available. The <code>saveToStorage()</code> and
-            <code>loadFromStorage()</code> methods are wrapped in <code>try-catch</code>
-            blocks so the application gracefully degrades — it still works, just without
-            persistence.
-        </li>
-    </ul>
-
-    <!-- ============================================ -->
-    <!-- 4. WHERE RECURSION WAS APPLIED               -->
-    <!-- ============================================ -->
-    <h2>4. Where Recursion Was Applied</h2>
-
-    <p>Recursion is used in two core methods of the <code>CourseManager</code> class:</p>
-
-    <h3>4.1 &nbsp; Recursive Search — <code>searchByCode(code, index)</code></h3>
-    <p>
-        Instead of a simple loop, the search function calls itself with an incremented index
-        until it either finds a matching course code or reaches the end of the array (base case).
-    </p>
-    <pre><code>searchByCode(code, index = 0) {
+            <h3>4.1 &nbsp; Recursive Search — <code>searchByCode(code, index)</code></h3>
+            <p>
+                Instead of a loop, the search function calls itself with an incremented index
+                until it either finds a match or reaches the end of the array (base case).
+            </p>
+            <pre><code>searchByCode(code, index = 0) {
     if (index >= this.courses.length) return null;          // base case
     if (this.courses[index].code === code.toUpperCase())
         return this.courses[index];                         // match found
     return this.searchByCode(code, index + 1);              // recursive call
 }</code></pre>
 
-    <h3>4.2 &nbsp; Recursive Unit Computation — <code>computeTotalUnits(index)</code></h3>
-    <p>
-        The total credit-unit count is calculated by recursively adding the current course's
-        units to the result of calling itself on the rest of the array.
-    </p>
-    <pre><code>computeTotalUnits(index = 0) {
+            <h3>4.2 &nbsp; Recursive Unit Computation — <code>computeTotalUnits(index)</code></h3>
+            <p>
+                The total is calculated by recursively adding each course's units to the result
+                of calling itself on the remaining courses.
+            </p>
+            <pre><code>computeTotalUnits(index = 0) {
     if (index >= this.courses.length) return 0;             // base case
     return this.courses[index].unit
          + this.computeTotalUnits(index + 1);               // recursive call
 }</code></pre>
 
-    <p>
-        Both functions follow the standard recursive pattern: a <strong>base case</strong> that
-        terminates the recursion, and a <strong>recursive case</strong> that reduces the problem
-        size by one on each call.
-    </p>
+            <div class="callout">
+                <p><strong>Both functions follow the standard recursive pattern:</strong></p>
+                <p>A <strong>base case</strong> that terminates the recursion, and a <strong>recursive case</strong>
+                    that reduces the problem size by one on each call.</p>
+            </div>
+        </div>
 
-    <!-- ============================================ -->
-    <!-- 5. PROGRAM DESIGN SUMMARY                    -->
-    <!-- ============================================ -->
-    <h2>5. Program Design Summary</h2>
+        <!-- ============================================ -->
+        <!-- 5. PROGRAM DESIGN SUMMARY                    -->
+        <!-- ============================================ -->
+        <div class="section">
+            <div class="section-header">
+                <span class="section-number">5</span>
+                <h2>Program Design Summary</h2>
+            </div>
 
-    <p>The codebase is organized into three source files with three JavaScript classes:</p>
+            <p>The codebase is organized into three source files:</p>
 
-    <table>
-        <thead>
-            <tr>
-                <th>File</th>
-                <th>Purpose</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><code>index.html</code></td>
-                <td>Page structure — header, menu, 7 content views, footer.</td>
-            </tr>
-            <tr>
-                <td><code>style.css</code></td>
-                <td>Dark-themed styling, responsive layout, animations.</td>
-            </tr>
-            <tr>
-                <td><code>app.js</code></td>
-                <td>All application logic — 3 classes described below.</td>
-            </tr>
-        </tbody>
-    </table>
+            <table>
+                <thead>
+                    <tr>
+                        <th>File</th>
+                        <th>Purpose</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>index.html</code></td>
+                        <td>Page structure — header, side menu, 7 content views, footer.</td>
+                    </tr>
+                    <tr>
+                        <td><code>style.css</code></td>
+                        <td>Dark-themed design system with responsive layout, animations, and CSS variables.</td>
+                    </tr>
+                    <tr>
+                        <td><code>app.js</code></td>
+                        <td>All application logic — three JavaScript classes detailed below.</td>
+                    </tr>
+                </tbody>
+            </table>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Class</th>
-                <th>Responsibility</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><code>Course</code></td>
-                <td>Represents a single course. Handles string processing (trim, toUpperCase) and CSV
-                    serialisation/deserialisation.</td>
-            </tr>
-            <tr>
-                <td><code>CourseManager</code></td>
-                <td>Manages the course array. Provides add, remove, search (recursive), compute units (recursive), save,
-                    load, and localStorage persistence.</td>
-            </tr>
-            <tr>
-                <td><code>AppController</code></td>
-                <td>Connects the UI to the data layer. Handles DOM events, view switching, table rendering, and user
-                    feedback messages.</td>
-            </tr>
-        </tbody>
-    </table>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Class</th>
+                        <th>Responsibility</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>Course</code></td>
+                        <td>Encapsulates a single course. Handles string processing (trim, toUpperCase) and CSV
+                            serialisation/deserialisation.</td>
+                    </tr>
+                    <tr>
+                        <td><code>CourseManager</code></td>
+                        <td>Manages the course array. Provides add, remove, recursive search, recursive unit
+                            computation, file save/load, and localStorage persistence.</td>
+                    </tr>
+                    <tr>
+                        <td><code>AppController</code></td>
+                        <td>Connects the UI to the data layer. Handles DOM events, view switching, table rendering, and
+                            user feedback messages.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
-    <!-- ============================================ -->
-    <!-- FOOTER                                       -->
-    <!-- ============================================ -->
-    <footer class="report-footer">
-        <p>COS201 Programming I — Mid-Semester Lab Assessment &copy; 2026</p>
-    </footer>
+        <hr>
+
+        <!-- ============================================ -->
+        <!-- FOOTER                                       -->
+        <!-- ============================================ -->
+        <footer class="report-footer">
+            <p>
+                COS201 Programming I
+                <span class="dot"></span>
+                Mid-Semester Lab Assessment
+                <span class="dot"></span>
+                &copy; 2026
+            </p>
+        </footer>
+
+    </div>
 
 </body>
 
