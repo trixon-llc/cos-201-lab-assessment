@@ -1,0 +1,495 @@
+/* ============================================================
+   style.css — Student Course Management System
+   COS201 Programming I — Mid-Semester Lab Assessment
+   ============================================================ */
+
+/* ---------- Reset & Base ---------- */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #0f1117;
+    --surface: #181a20;
+    --surface-alt: #1e2029;
+    --border: #2a2d38;
+    --text: #e4e6ed;
+    --text-muted: #8b8fa3;
+    --accent: #6c63ff;
+    --accent-hover: #7f78ff;
+    --accent-glow: rgba(108, 99, 255, .25);
+    --success: #22c55e;
+    --danger: #ef4444;
+    --warning: #f59e0b;
+    --radius: 10px;
+    --transition: .25s ease;
+}
+
+html {
+    font-size: 15px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.6;
+}
+
+/* ---------- Header ---------- */
+#app-header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    backdrop-filter: blur(12px);
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-group {
+    display: flex;
+    align-items: center;
+    gap: .85rem;
+}
+
+.logo-icon {
+    font-size: 2rem;
+}
+
+.header-content h1 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: -.02em;
+}
+
+.subtitle {
+    color: var(--text-muted);
+    font-size: .82rem;
+}
+
+/* Badge */
+.badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--accent-glow);
+    border: 1px solid var(--accent);
+    border-radius: var(--radius);
+    padding: .35rem .9rem;
+    cursor: default;
+}
+
+.badge-label {
+    font-size: .65rem;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--text-muted);
+}
+
+.badge-value {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--accent-hover);
+}
+
+/* ---------- Main Layout ---------- */
+#app-main {
+    max-width: 1200px;
+    width: 100%;
+    margin: 1.5rem auto;
+    padding: 0 1.5rem;
+    display: flex;
+    gap: 1.5rem;
+    flex: 1;
+}
+
+/* ---------- Side Panel ---------- */
+#action-panel {
+    width: 220px;
+    flex-shrink: 0;
+}
+
+.panel-title {
+    font-size: .75rem;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--text-muted);
+    margin-bottom: .75rem;
+    padding-left: .5rem;
+}
+
+nav {
+    display: flex;
+    flex-direction: column;
+    gap: .35rem;
+}
+
+.menu-btn {
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    width: 100%;
+    padding: .65rem .75rem;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: var(--radius);
+    color: var(--text-muted);
+    font-size: .88rem;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all var(--transition);
+}
+
+.menu-btn:hover {
+    background: var(--surface-alt);
+    color: var(--text);
+}
+
+.menu-btn.active {
+    background: var(--accent-glow);
+    border-color: var(--accent);
+    color: var(--text);
+    font-weight: 600;
+}
+
+.menu-btn.exit-btn:hover {
+    border-color: var(--danger);
+    color: var(--danger);
+}
+
+.menu-icon {
+    font-size: 1.05rem;
+    width: 1.4rem;
+    text-align: center;
+}
+
+/* ---------- Content Panel ---------- */
+#content-panel {
+    flex: 1;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 2rem 2.25rem;
+    min-height: 450px;
+    position: relative;
+    overflow: hidden;
+}
+
+.view {
+    display: none;
+    animation: fadeIn .3s ease;
+}
+
+.view.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.view h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+    padding-bottom: .6rem;
+    border-bottom: 1px solid var(--border);
+}
+
+/* ---------- Forms ---------- */
+.form-group {
+    margin-bottom: 1.1rem;
+}
+
+.form-group label {
+    display: block;
+    font-size: .82rem;
+    font-weight: 600;
+    margin-bottom: .3rem;
+    color: var(--text-muted);
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"] {
+    width: 100%;
+    padding: .6rem .85rem;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    color: var(--text);
+    font-family: inherit;
+    font-size: .92rem;
+    transition: border-color var(--transition);
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+.form-group.inline {
+    display: flex;
+    gap: .6rem;
+}
+
+.form-group.inline input {
+    flex: 1;
+}
+
+/* Buttons */
+.primary-btn {
+    padding: .6rem 1.4rem;
+    background: var(--accent);
+    border: none;
+    border-radius: var(--radius);
+    color: #fff;
+    font-family: inherit;
+    font-size: .9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background var(--transition), transform .15s ease;
+}
+
+.primary-btn:hover {
+    background: var(--accent-hover);
+    transform: translateY(-1px);
+}
+
+.primary-btn:active {
+    transform: translateY(0);
+}
+
+/* ---------- Feedback ---------- */
+.feedback {
+    margin-top: 1rem;
+    padding: .65rem 1rem;
+    border-radius: var(--radius);
+    font-size: .88rem;
+    display: none;
+}
+
+.feedback.show {
+    display: block;
+    animation: fadeIn .25s ease;
+}
+
+.feedback.success {
+    background: rgba(34, 197, 94, .12);
+    border: 1px solid var(--success);
+    color: var(--success);
+}
+
+.feedback.error {
+    background: rgba(239, 68, 68, .12);
+    border: 1px solid var(--danger);
+    color: var(--danger);
+}
+
+/* ---------- Table ---------- */
+#course-table-wrap {
+    overflow-x: auto;
+}
+
+#course-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#course-table th,
+#course-table td {
+    text-align: left;
+    padding: .6rem .75rem;
+    border-bottom: 1px solid var(--border);
+    font-size: .88rem;
+}
+
+#course-table th {
+    font-size: .75rem;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    color: var(--text-muted);
+    background: var(--surface-alt);
+}
+
+#course-table tr:hover td {
+    background: var(--surface-alt);
+}
+
+.delete-btn {
+    padding: .25rem .6rem;
+    background: transparent;
+    border: 1px solid var(--danger);
+    border-radius: 6px;
+    color: var(--danger);
+    cursor: pointer;
+    font-size: .78rem;
+    font-family: inherit;
+    transition: all var(--transition);
+}
+
+.delete-btn:hover {
+    background: var(--danger);
+    color: #fff;
+}
+
+.empty-message {
+    text-align: center;
+    color: var(--text-muted);
+    padding: 2.5rem 0;
+    font-style: italic;
+}
+
+/* ---------- Search Result Card ---------- */
+.result-card {
+    margin-top: 1.2rem;
+    padding: 1.2rem 1.4rem;
+    background: var(--surface-alt);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+}
+
+.result-card.hidden {
+    display: none;
+}
+
+.result-card.found {
+    border-color: var(--success);
+}
+
+.result-card.not-found {
+    border-color: var(--danger);
+}
+
+.result-card h3 {
+    margin-bottom: .3rem;
+}
+
+.result-card p {
+    color: var(--text-muted);
+    font-size: .9rem;
+}
+
+/* ---------- Stats Card ---------- */
+.stats-card {
+    text-align: center;
+    padding: 2.5rem 1rem;
+    background: var(--surface-alt);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+}
+
+.stat-number {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--accent-hover);
+    line-height: 1;
+}
+
+.stat-label {
+    margin-top: .5rem;
+    font-size: 1rem;
+    color: var(--text);
+    font-weight: 600;
+}
+
+.stat-sub {
+    color: var(--text-muted);
+    font-size: .85rem;
+}
+
+/* ---------- File views ---------- */
+.view-desc {
+    color: var(--text-muted);
+    margin-bottom: 1.2rem;
+    font-size: .92rem;
+}
+
+.file-label {
+    display: inline-block;
+    padding: .6rem 1.4rem;
+    background: var(--accent);
+    border-radius: var(--radius);
+    color: #fff;
+    font-weight: 600;
+    font-size: .9rem;
+    cursor: pointer;
+    transition: background var(--transition), transform .15s ease;
+}
+
+.file-label:hover {
+    background: var(--accent-hover);
+    transform: translateY(-1px);
+}
+
+/* ---------- Exit Card ---------- */
+.exit-card {
+    text-align: center;
+    padding: 3rem 1rem;
+}
+
+.exit-emoji {
+    font-size: 3rem;
+    margin-bottom: .5rem;
+}
+
+.exit-sub {
+    color: var(--text-muted);
+    margin-top: .4rem;
+    font-size: .88rem;
+}
+
+/* ---------- Footer ---------- */
+#app-footer {
+    text-align: center;
+    padding: 1rem;
+    font-size: .78rem;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+    #app-main {
+        flex-direction: column;
+    }
+
+    #action-panel {
+        width: 100%;
+    }
+
+    nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: .4rem;
+    }
+
+    .menu-btn {
+        flex: 1 1 auto;
+        justify-content: center;
+        font-size: .8rem;
+        padding: .5rem .5rem;
+    }
+
+    #content-panel {
+        padding: 1.5rem 1.2rem;
+    }
+}

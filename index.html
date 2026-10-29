@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Student Course Management System - COS201 Lab Assessment">
+    <title>Student Course Management System</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- ===== Header ===== -->
+    <header id="app-header">
+        <div class="header-content">
+            <div class="logo-group">
+                <span class="logo-icon">📚</span>
+                <div>
+                    <h1>Student Course Manager</h1>
+                    <p class="subtitle">COS201 — Mid-Semester Lab Project</p>
+                </div>
+            </div>
+            <div id="unit-badge" class="badge" title="Total credit units">
+                <span class="badge-label">Total Units</span>
+                <span id="total-units" class="badge-value">0</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== Main Layout ===== -->
+    <main id="app-main">
+
+        <!-- Left Panel — Actions -->
+        <aside id="action-panel">
+            <h2 class="panel-title">Menu</h2>
+            <nav>
+                <button id="btn-add" class="menu-btn active" data-view="add-view">
+                    <span class="menu-icon">➕</span> Add Course
+                </button>
+                <button id="btn-view" class="menu-btn" data-view="list-view">
+                    <span class="menu-icon">📋</span> View All Courses
+                </button>
+                <button id="btn-search" class="menu-btn" data-view="search-view">
+                    <span class="menu-icon">🔍</span> Search by Code
+                </button>
+                <button id="btn-units" class="menu-btn" data-view="units-view">
+                    <span class="menu-icon">🧮</span> Compute Total Units
+                </button>
+                <button id="btn-save" class="menu-btn" data-view="save-view">
+                    <span class="menu-icon">💾</span> Save to File
+                </button>
+                <button id="btn-load" class="menu-btn" data-view="load-view">
+                    <span class="menu-icon">📂</span> Load from File
+                </button>
+                <button id="btn-exit" class="menu-btn exit-btn" data-view="exit-view">
+                    <span class="menu-icon">🚪</span> Exit Program
+                </button>
+            </nav>
+        </aside>
+
+        <!-- Right Panel — Content Views -->
+        <section id="content-panel">
+
+            <!-- 1. Add Course View -->
+            <div id="add-view" class="view active">
+                <h2>Add a New Course</h2>
+                <form id="add-form" autocomplete="off">
+                    <div class="form-group">
+                        <label for="input-code">Course Code</label>
+                        <input type="text" id="input-code" placeholder="e.g. COS201" maxlength="10" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="input-title">Course Title</label>
+                        <input type="text" id="input-title" placeholder="e.g. Programming I" maxlength="60" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="input-unit">Credit Units</label>
+                        <input type="number" id="input-unit" placeholder="e.g. 3" min="1" max="12" required>
+                    </div>
+                    <button type="submit" id="submit-add" class="primary-btn">Add Course</button>
+                </form>
+                <div id="add-feedback" class="feedback"></div>
+            </div>
+
+            <!-- 2. View All Courses -->
+            <div id="list-view" class="view">
+                <h2>All Registered Courses</h2>
+                <div id="course-table-wrap">
+                    <table id="course-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Code</th>
+                                <th>Title</th>
+                                <th>Units</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="course-tbody"></tbody>
+                    </table>
+                    <p id="empty-msg" class="empty-message">No courses added yet.</p>
+                </div>
+            </div>
+
+            <!-- 3. Search View -->
+            <div id="search-view" class="view">
+                <h2>Search Course by Code</h2>
+                <form id="search-form" autocomplete="off">
+                    <div class="form-group inline">
+                        <input type="text" id="search-input" placeholder="Enter course code…" maxlength="10" required>
+                        <button type="submit" class="primary-btn">Search</button>
+                    </div>
+                </form>
+                <div id="search-result" class="result-card hidden"></div>
+            </div>
+
+            <!-- 4. Compute Total Units -->
+            <div id="units-view" class="view">
+                <h2>Total Credit Units</h2>
+                <div class="stats-card">
+                    <p class="stat-number" id="stat-units">0</p>
+                    <p class="stat-label">Total Credit Units</p>
+                    <p class="stat-sub" id="stat-count">across 0 course(s)</p>
+                </div>
+            </div>
+
+            <!-- 5. Save to File -->
+            <div id="save-view" class="view">
+                <h2>Save Courses to File</h2>
+                <p class="view-desc">Download your current course list as a <strong>.txt</strong> file so you can reload
+                    it later.</p>
+                <button id="do-save" class="primary-btn">💾 Download Course File</button>
+                <div id="save-feedback" class="feedback"></div>
+            </div>
+
+            <!-- 6. Load from File -->
+            <div id="load-view" class="view">
+                <h2>Load Courses from File</h2>
+                <p class="view-desc">Select a previously saved <strong>.txt</strong> course file to load.</p>
+                <label for="file-input" class="file-label">📂 Choose File</label>
+                <input type="file" id="file-input" accept=".txt" hidden>
+                <div id="load-feedback" class="feedback"></div>
+            </div>
+
+            <!-- 7. Exit View -->
+            <div id="exit-view" class="view">
+                <h2>Exit Program</h2>
+                <div class="exit-card">
+                    <p class="exit-emoji">👋</p>
+                    <p>Thank you for using the <strong>Student Course Manager</strong>.</p>
+                    <p class="exit-sub">You may close this browser tab to exit.</p>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- ===== Footer ===== -->
+    <footer id="app-footer">
+        <p>COS201 Programming I — Mid-Semester Lab Assessment &copy; 2026</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
